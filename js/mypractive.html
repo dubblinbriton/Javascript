@@ -1,0 +1,20 @@
+<head>
+    <title>
+        byte-me 
+    </title>
+</head>
+<body>
+    
+
+    <script>
+      var createCounter = function(n) {
+        let i=-1;
+        return function() {
+        i++;
+        console.log(n+i);
+        return n + i;
+        
+        };
+      };
+    </script>
+</body>

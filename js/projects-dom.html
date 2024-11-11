@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>dom project</title>
+
+</head>
+<style>
+  .js{
+    background-color: #ff0000; 
+    color: white;
+    border: none;
+    border-radius: 70x;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+.js-subscribe{
+    background-color: #080808; 
+    color: white;
+    border: none;
+    border-radius: 6000px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+
+}
+  .js-subscribe:active{
+    background-color: #3a08dd; 
+    color: white;
+    border: none;
+    border-radius: 6000px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+  }
+  .js-subscribe:hover{
+    background-color: #3bdd66; 
+    color: white;
+    border: none;
+    border-radius: 6000px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 20px;
+  }
+  a:hover{
+    background-color: #3bdd66;
+  }
+  
+</style>
+<body>
+  <a href="https://www.google.com/search?q=omst+weird+website&oq=omst+weird+website&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQABgNGIAEMgkIAhAAGA0YgAQyCAgDEAAYFhgeMgoIBBAAGA8YFhgeMggIBRAAGBYYHjINCAYQABiGAxiABBiKBTINCAcQABiGAxiABBiKBTIKCAgQABiABBiiBDIKCAkQABiABBiiBNIBCTEzMzYzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" targer="_blank">Ayo</a>
+   <p>YouTube Subscribe Button</p> 
+   <button onclick="
+   subscribe();
+   " class="js-subscribe"> 
+     Subscribe
+    </button>
+    <p> amazon Shipping calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+    handlecost(event);
+    ">
+    <button onclick="
+    calculatetotal();
+    ">caculate</button>
+    <p class="js-total-cost"></p>
+    
+    <script>
+       window.document
+       window.console.log('window');
+       window.alert
+
+
+
+      function handlecost(event){
+        if(event.key === 'Enter'){
+          calculatetotal();
+      }
+    }
+      function calculatetotal(){
+       const inputElement =  document.querySelector('.js-cost-input');
+       let cost = Number(inputElement.value);
+       if(cost < 40)
+       {
+         cost = cost +10;
+       }
+       document.querySelector('.js-total-cost')
+       .innerHTML= `$${cost}`;
+      }
+      function subscribe(){
+        const buttonElement= document.querySelector('.js-subscribe');
+        if(buttonElement.innerText=== 'Subscribe'){
+         buttonElement.innerHTML = 'Subscribed';}
+              
+        else
+         {buttonElement.innerHTML = 'Subscribe';}
+        }
+     
+
+    </script>
+</body>
+
+</html>
+

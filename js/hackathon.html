@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agricultural Problems in India</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+</style>
+<script>
+    const problemsData = [
+  {
+    problem: "Drought",
+    associatedDiseasesPests: "No direct disease, but reduces crop growth",
+    statesAffected: "Maharashtra, Karnataka, Andhra Pradesh, Rajasthan, Tamil Nadu",
+    causes: "Irregular rainfall, poor irrigation infrastructure, climate change",
+    potentialSolutions: "Drought-resistant crop varieties, Improved irrigation and water management systems, Rainwater harvesting and watershed management"
+  },
+  {
+    problem: "Flooding",
+    associatedDiseasesPests: "Root rot, bacterial wilt, fungal infections",
+    statesAffected: "Bihar, Assam, West Bengal, Uttar Pradesh",
+    causes: "Heavy rainfall, poor drainage, river overflow",
+    potentialSolutions: "Development of flood-tolerant crops, Improved drainage systems and flood barriers, Integrated pest management practices"
+  },
+  {
+    problem: "Pest Infestation",
+    associatedDiseasesPests: "Fall armyworm, Whiteflies, Stem borers",
+    statesAffected: "Punjab, Haryana, Uttar Pradesh, Maharashtra",
+    causes: "Monocropping, climate change, lack of pest control measures",
+    potentialSolutions: "Biological pest control methods, Development and use of pest-resistant crop varieties, Pesticide management and Integrated Pest Management (IPM)"
+  },
+  {
+    problem: "Soil Degradation",
+    associatedDiseasesPests: "Reduces crop yield and nutrient content",
+    statesAffected: "Punjab, Haryana, Uttar Pradesh, Madhya Pradesh",
+    causes: "Overuse of chemical fertilizers, deforestation",
+    potentialSolutions: "Organic farming and use of green manure, Conservation tillage and crop rotation, Soil testing and balanced use of fertilizers"
+  },
+  {
+    problem: "Salinity",
+    associatedDiseasesPests: "Reduced plant growth, nutrient deficiency",
+    statesAffected: "Gujarat, Rajasthan, Punjab, Haryana",
+    causes: "Over-irrigation, saltwater intrusion",
+    potentialSolutions: "Use of salt-tolerant crop varieties, Improved irrigation practices to manage salinity levels"
+  },
+  {
+    problem: "Plant Diseases",
+    associatedDiseasesPests: "Rice blast, Powdery mildew, Late blight",
+    statesAffected: "West Bengal, Odisha, Kerala, Punjab, Assam",
+    causes: "Fungal spores, bacterial pathogens, viruses",
+    potentialSolutions: "Disease-resistant crop varieties, Bio-control agents and organic treatments"
+  },
+  {
+    problem: "Climate Change",
+    associatedDiseasesPests: "Increase in pests and diseases",
+    statesAffected: "Pan India",
+    causes: "Extreme weather patterns, rising temperatures",
+    potentialSolutions: "Climate-resilient crops, Agroforestry and sustainable farming practices"
+  },
+  {
+    problem: "Water Scarcity",
+    associatedDiseasesPests: "Reduced crop yield and quality",
+    statesAffected: "Rajasthan, Maharashtra, Gujarat, Karnataka",
+    causes: "Overuse of water resources, climate change",
+    potentialSolutions: "Drip irrigation and water-saving technologies, Policy interventions for sustainable water use"
+  },
+]
+</script>
+
+
+  <h1>Agricultural Problems in India</h1>
+  <table id="problems-table">
+    <thead>
+      <tr>
+        <th>Problem</th>
+        <th>Associated Diseases/Pests</th>
+        <th>States Affected</th>
+        <th>Causes</th>
+        <th>Potential Solutions</th>
+      </tr>
+    </thead>
+    <tbody id="problems-tbody">
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>

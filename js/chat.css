@@ -1,0 +1,324 @@
+/* Base styling and imports */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+    --rock-color: #ff4444;
+    --paper-color: #44ff44;
+    --scissors-color: #4444ff;
+}
+
+body {
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at center, rgba(40,40,40,0.8) 0%, rgba(0,0,0,0.95) 100%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+    animation: backgroundPulse 4s ease-in-out infinite;
+}
+
+/* Title styling */
+p:first-of-type {
+    font-size: 4em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    position: relative;
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    animation: titleGlow 2s ease-in-out infinite;
+}
+
+p:first-of-type::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -2px;
+    text-shadow: 2px 0 #ff0000;
+    top: 0;
+    color: #fff;
+    background: #000;
+    overflow: hidden;
+    animation: glitch 3s infinite linear alternate-reverse;
+}
+
+p:first-of-type::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -2px 0 #00ff00;
+    top: 0;
+    color: #fff;
+    background: #000;
+    overflow: hidden;
+    animation: glitch 2s infinite linear alternate-reverse;
+}
+
+/* Game buttons container */
+.button-container {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0;
+    perspective: 1000px;
+}
+
+/* Game buttons */
+button {
+    padding: 20px 40px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: transparent;
+    color: white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+/* Button specific styling */
+button[onclick*="rock"] {
+    border: 2px solid var(--rock-color);
+    text-shadow: 0 0 10px var(--rock-color);
+}
+
+button[onclick*="paper"] {
+    border: 2px solid var(--paper-color);
+    text-shadow: 0 0 10px var(--paper-color);
+}
+
+button[onclick*="scissors"] {
+    border: 2px solid var(--scissors-color);
+    text-shadow: 0 0 10px var(--scissors-color);
+}
+
+/* Button hover effects */
+button:hover {
+    transform: scale(1.1) translateZ(20px);
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+button[onclick*="rock"]:hover {
+    box-shadow: 0 0 30px var(--rock-color);
+}
+
+button[onclick*="paper"]:hover {
+    box-shadow: 0 0 30px var(--paper-color);
+}
+
+button[onclick*="scissors"]:hover {
+    box-shadow: 0 0 30px var(--scissors-color);
+}
+
+/* Battle Animation Container */
+.battle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.battle-active {
+    opacity: 1;
+}
+
+/* Choice Displays */
+.player-choice, .computer-choice {
+    position: absolute;
+    font-size: 8em;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.player-choice {
+    left: -100px;
+    animation: playerEntrance 1s forwards;
+}
+
+.computer-choice {
+    right: -100px;
+    animation: computerEntrance 1s forwards;
+}
+
+/* Score Display */
+.js-score {
+    font-size: 2em;
+    margin: 20px 0;
+    padding: 20px 40px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.js-score::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255,255,255,0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: scoreShine 3s infinite;
+}
+
+
+.js-moves, .js-result {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 15px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: resultFadeIn 0.5s forwards;
+}
+
+/* Reset button */
+button[onclick="resetScore"] {
+    background: #ff4444;
+    margin-top: 30px;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+button[onclick="resetScore"]:hover {
+    transform: rotateX(10deg) rotateY(10deg);
+    box-shadow: 
+        -5px -5px 20px rgba(255,255,255,0.1),
+        5px 5px 20px rgba(0,0,0,0.5);
+}
+
+/* Animations */
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+    50% { text-shadow: 0 0 40px rgba(255,255,255,0.8); }
+}
+
+@keyframes glitch {
+    0% { clip-path: inset(50% 0 30% 0); }
+    20% { clip-path: inset(20% 0 60% 0); }
+    40% { clip-path: inset(40% 0 40% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 85% 0); }
+    100% { clip-path: inset(40% 0 50% 0); }
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes playerEntrance {
+    0% { transform: translateX(-100%) translateY(-50%) rotate(-180deg); opacity: 0; }
+    100% { transform: translateX(50%) translateY(-50%) rotate(0deg); opacity: 1; }
+}
+
+@keyframes computerEntrance {
+    0% { transform: translateX(100%) translateY(-50%) rotate(180deg); opacity: 0; }
+    100% { transform: translateX(-50%) translateY(-50%) rotate(0deg); opacity: 1; }
+}
+
+@keyframes battleClash {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@keyframes scoreShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+@keyframes resultFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Battle Effects */
+.clash-effect {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.clash-effect.active {
+    animation: battleClash 0.5s ease-out forwards;
+}
+
+/* Win/Lose Effects */
+.win-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent, rgba(68, 255, 68, 0.2));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.lose-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent, rgba(255, 68, 68, 0.2));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    p:first-of-type {
+        font-size: 2.5em;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+}
